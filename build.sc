@@ -4,8 +4,8 @@ import $ivy.`com.goyeau::mill-scalafix::0.2.8`
 import $ivy.`io.github.davidgregory084::mill-tpolecat::0.3.1`
 import $file.project.Dependencies
 import Dependencies.Dependencies._
-import $file.project.{SwaggerModelGenerator => SwaggerModelGeneratorFile}
-import SwaggerModelGeneratorFile.SwaggerModelGenerator
+// import $file.project.{SwaggerModelGenerator => SwaggerModelGeneratorFile}
+// import SwaggerModelGeneratorFile.SwaggerModelGenerator
 import com.goyeau.mill.git.{GitVersionModule, GitVersionedPublishModule}
 import com.goyeau.mill.scalafix.StyleModule
 import io.github.davidgregory084.TpolecatModule
