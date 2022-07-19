@@ -1,6 +1,6 @@
 package a
 
 
-object A {
-	
+object A extends App  {
+  println("ok")
 }
