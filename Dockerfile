@@ -1,7 +1,7 @@
 #FROM java:11 as build
 FROM openjdk:11 as build
 WORKDIR /usr/src/app
-ENV MILL_VERSION 0.9.5
+ENV MILL_VERSION 0.10.5
 RUN \
   curl -L -o /usr/local/bin/mill https://github.com/lihaoyi/mill/releases/download/$MILL_VERSION/$MILL_VERSION && \
   chmod +x /usr/local/bin/mill
