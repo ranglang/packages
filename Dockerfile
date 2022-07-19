@@ -7,7 +7,10 @@ RUN \
   chmod +x /usr/local/bin/mill
 
 COPY . .
+RUN pwd
 RUN mill  kubernetes.assembly
+RUN ls -ls
+RUN pwd
 
 #deno compile --unstable --allow-net app.ts -p 8080
 FROM openjdk:11
@@ -18,4 +21,4 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 WORKDIR /app
 COPY --from=build /usr/src/app/out/kubernetes/assembly/dest/out-tmp.jar /app
 EXPOSE 8080
-ENTRYPOINT [ "java","-cp", "/app/out-tmp.jar", "e.AirFrame"]
+ENTRYPOINT [ "java","-cp", "/app/out-tmp.jar", "e.M"]

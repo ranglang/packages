@@ -1,11 +1,11 @@
-package a
+package e
 
 
 import cats.effect._, org.http4s._, org.http4s.dsl.io._
 
 import cats.effect.unsafe.IORuntime
 
-object A extends IOApp  {
+object M extends IOApp  {
   println("ok")
 
 //  implicit val runtime: IORuntime = cats.effect.unsafe.IORuntime.global
