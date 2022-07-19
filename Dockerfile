@@ -19,6 +19,6 @@ ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /app
-COPY --from=build /usr/src/app/out/kubernetes/assembly/dest/out-tmp.jar /app
+COPY --from=build /usr/src/app/out/kubernetes/assembly.dest/out-tmp.jar /app
 EXPOSE 8080
 ENTRYPOINT [ "java","-cp", "/app/out-tmp.jar", "e.M"]
