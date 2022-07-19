@@ -18,6 +18,11 @@ object M extends IOApp  {
       Ok(s"Hello, $name.")
   }
 
+  val helloWorldService3 = HttpRoutes.of[IO] {
+    case GET -> Root / "test-1" / name =>
+      Ok(IO.pure("xxxxxxxxxx"))
+  }
+
 
   import io.circe.generic.auto._
   import io.circe.syntax._
@@ -39,7 +44,7 @@ object M extends IOApp  {
   import org.http4s.implicits._
   import org.http4s.server.Router
   import scala.concurrent.duration._
-  val services = helloWorldService2 <+> helloWorldService
+  val services = helloWorldService2 <+> helloWorldService  <+> helloWorldService3
   // services: cats.data.Kleisli[cats.data.OptionT[IO, β$0$], Request[IO], Response[IO]] = Kleisli(
   //   run = cats.data.KleisliSemigroupK$$Lambda$20809/607901384@6d3944e4
   // )
