@@ -4,6 +4,7 @@ import cats.effect.*
 import org.http4s.*
 import org.http4s.dsl.io.*
 import cats.effect.unsafe.IORuntime
+import com.MyThing
 import e.M.AppConfig
 import wvlet.airframe.DISupport
 
@@ -26,7 +27,8 @@ object M extends IOApp {
   }
 
   val helloWorldService3 = HttpRoutes.of[IO] { case GET -> Root / "test-1" / name =>
-    Ok(IO.pure("xxxxxxxxxx"))
+    val f = MyThing.safelyDoThings[IO] *> IO.pure("xxxxxxxxxx")
+    Ok(f)
   }
 
   import io.circe.generic.auto._
