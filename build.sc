@@ -14,11 +14,12 @@ import mill.scalalib.TestModule.Munit
 import mill.scalalib._
 import mill.scalalib.api.Util.isScala3
 import mill.scalalib.publish.{Developer, License, PomSettings, VersionControl}
+import publish._
 
 
 import mill._, scalalib._
 
-object kubernetes extends ScalaModule with ScalafmtModule {
+object kubernetes extends ScalaModule with ScalafmtModule  with PublishModule {
   // def scalaVersion = "3.0.2"
  override def scalaVersion ="3.1.3"
   override def scalacOptions =
@@ -29,9 +30,23 @@ object kubernetes extends ScalaModule with ScalafmtModule {
 
   override def ivyDeps =
     super.ivyDeps() ++ http4s ++ circe ++ circeYaml ++ bouncycastle ++ collectionCompat ++ logging ++ airframe ++ log4cats
-  override def scalacPluginIvyDeps = super.scalacPluginIvyDeps() 
-  // ++
-  //   (if (isScala3(scalaVersion())) Agg.empty else Agg(ivy"org.typelevel:::kind-projector:0.13.2"))
+  override def scalacPluginIvyDeps = super.scalacPluginIvyDeps()
+
+//  def scalaVersion = "2.13.1"
+
+  def publishVersion = "0.0.1"
+
+  def pomSettings = PomSettings(
+    description = "Hello",
+    organization = "com.lqiong",
+//    https://packages.aliyun.com/maven/repository/2018472-release-Bfwxhk
+    url = "https://github.com/lihaoyi/example",
+    licenses = Seq(License.MIT),
+    versionControl = VersionControl.github("lihaoyi", "example"),
+    developers = Seq(
+      Developer("lihaoyi", "Li Haoyi", "https://github.com/lihaoyi")
+    )
+  )
 }
 
 

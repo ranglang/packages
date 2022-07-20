@@ -157,3 +157,6 @@ means this project will always remain up to date with the latest Kubernetes API.
 
 * [Kerberos-Operator2](https://github.com/novakov-alexey/krb-operator2)
 # scala3-mill
+
+
+mill kubernetes.publishM2Local
