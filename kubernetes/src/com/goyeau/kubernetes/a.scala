@@ -1,12 +1,22 @@
 package e
 
 
-import cats.effect._, org.http4s._, org.http4s.dsl.io._
-
+import cats.effect.*
+import org.http4s.*
+import org.http4s.dsl.io.*
 import cats.effect.unsafe.IORuntime
+import e.M.AppConfig
+import wvlet.airframe.DISupport
 
 
 case class Adddddddddddd (name: String)
+
+trait MyApp  extends DISupport {
+
+  import wvlet.airframe._
+  // In-trait injection
+  val config = bind[AppConfig]
+}
 
 object M extends IOApp  {
   println("ok")
@@ -71,6 +81,21 @@ object M extends IOApp  {
   //      case GET -> Root / "hello" / name =>
   //        Ok(s"Hello, $name.")
   //    }.orNotFound
+
+  import wvlet.airframe._
+
+  case class AppConfig(appName:String)
+
+
+  val d = newDesign
+    .bind[AppConfig].toInstance(AppConfig("Hello Airframe!"))
+
+  // Creates a new MyApp
+  d.build[MyApp] { app: MyApp => {
+      println("xxxxxxxxxxxx")
+      // Do something with app
+    }
+  }
 
     def run(args: List[String]): IO[ExitCode] =
       EmberServerBuilder

@@ -29,7 +29,7 @@ object kubernetes extends ScalaModule {
       // (if (isScala3(scalaVersion()))  else Seq.empty)
 
   override def ivyDeps =
-    super.ivyDeps() ++ http4s ++ circe ++ circeYaml ++ bouncycastle ++ collectionCompat ++ logging
+    super.ivyDeps() ++ http4s ++ circe ++ circeYaml ++ bouncycastle ++ collectionCompat ++ logging ++ airframe
   override def scalacPluginIvyDeps = super.scalacPluginIvyDeps() 
   // ++
   //   (if (isScala3(scalaVersion())) Agg.empty else Agg(ivy"org.typelevel:::kind-projector:0.13.2"))

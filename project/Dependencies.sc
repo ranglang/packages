@@ -7,11 +7,17 @@ object Dependencies {
     Agg(
       ivy"io.circe::circe-core:$version",
       ivy"io.circe::circe-generic:$version",
-      ivy"io.circe::circe-parser:$version",
-    ivy"io.circe::circe-literal:$version"
+      ivy"io.circe::circe-parser:$version"
+//    ivy"io.circe::circe-literal:$version"
     //    "io.circe" %% "circe-generic" % "0.14.2",
     // Optional for string interpolation to JSON model
 //    "io.circe" %% "circe-literal" % "0.14.2"
+    )
+  }
+
+  lazy val airframe = {
+    Agg(
+    ivy"org.wvlet.airframe::airframe:22.7.3"
     )
   }
 
