@@ -2,6 +2,13 @@ import mill._
 import mill.scalalib._
 
 object Dependencies {
+
+  lazy val log4cats = {
+      Agg(
+        ivy"org.typelevel::log4cats-core:2.4.0",
+       ivy"org.typelevel::log4cats-slf4j:2.4.0"
+    )
+  }
   lazy val circe = {
     val version = "0.14.1"
     Agg(
