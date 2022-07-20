@@ -15,7 +15,7 @@ trait MyApp  extends DISupport {
 
   import wvlet.airframe._
   // In-trait injection
-  val config = bind[AppConfig]
+//  val config = bind[AppConfig]
 }
 
 object M extends IOApp  {
@@ -91,11 +91,11 @@ object M extends IOApp  {
     .bind[AppConfig].toInstance(AppConfig("Hello Airframe!"))
 
   // Creates a new MyApp
-  d.build[MyApp] { app: MyApp => {
-      println("xxxxxxxxxxxx")
-      // Do something with app
-    }
-  }
+//  d.build[MyApp] { app: MyApp => {
+//      println("xxxxxxxxxxxx")
+//      // Do something with app
+//    }
+//  }
 
     def run(args: List[String]): IO[ExitCode] =
       EmberServerBuilder
