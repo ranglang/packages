@@ -44,7 +44,6 @@ object kubernetes extends ScalaModule with ScalafmtModule  with PublishModule {
 
   override def sonatypeUri: String = ">https://maven.pkg.github.com/ranglang/claim"
 
-  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
   def pomSettings = PomSettings(
     description = "Hello",
     organization = "com.lqiong",
@@ -59,14 +58,3 @@ object kubernetes extends ScalaModule with ScalafmtModule  with PublishModule {
 }
 
 
-// object `kubernetes`extends KubernetesClientModule
-// extends Cross[KubernetesClientModule]("3.1.3")
-// object kubernetes
-//     extends  ScalaModule {
-
-
-//   object test extends Tests with Munit {
-//     override def forkArgs = super.forkArgs() :+ "-Djdk.tls.client.protocols=TLSv1.2"
-//     override def ivyDeps  = super.ivyDeps() ++ tests ++ logback
-//   }
-// }
