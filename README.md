@@ -160,3 +160,6 @@ means this project will always remain up to date with the latest Kubernetes API.
 
 
 mill kubernetes.publishM2Local
+
+
+mill kubernetes.publishM2Local
