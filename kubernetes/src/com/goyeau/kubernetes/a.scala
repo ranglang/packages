@@ -1,6 +1,5 @@
 package e
 
-
 import cats.effect.*
 import org.http4s.*
 import org.http4s.dsl.io.*
@@ -8,31 +7,27 @@ import cats.effect.unsafe.IORuntime
 import e.M.AppConfig
 import wvlet.airframe.DISupport
 
+case class Adddddddddddd(name: String)
 
-case class Adddddddddddd (name: String)
-
-trait MyApp  extends DISupport {
+trait MyApp extends DISupport {
 
   import wvlet.airframe._
   // In-trait injection
 //  val config = bind[AppConfig]
 }
 
-object M extends IOApp  {
+object M extends IOApp {
   println("ok")
 
 //  implicit val runtime: IORuntime = cats.effect.unsafe.IORuntime.global
 
-  val helloWorldService = HttpRoutes.of[IO] {
-    case GET -> Root / "hello" / name =>
-      Ok(s"Hello, $name.")
+  val helloWorldService = HttpRoutes.of[IO] { case GET -> Root / "hello" / name =>
+    Ok(s"Hello, $name.")
   }
 
-  val helloWorldService3 = HttpRoutes.of[IO] {
-    case GET -> Root / "test-1" / name =>
-      Ok(IO.pure("xxxxxxxxxx"))
+  val helloWorldService3 = HttpRoutes.of[IO] { case GET -> Root / "test-1" / name =>
+    Ok(IO.pure("xxxxxxxxxx"))
   }
-
 
   import io.circe.generic.auto._
   import io.circe.syntax._
@@ -43,9 +38,8 @@ object M extends IOApp  {
   import org.http4s.ember.server._
   import org.http4s.implicits._
 
-  val helloWorldService2 = HttpRoutes.of[IO] {
-    case GET -> Root / "hello-world" / name =>
-      Ok(Adddddddddddd("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx").asJson)
+  val helloWorldService2 = HttpRoutes.of[IO] { case GET -> Root / "hello-world" / name =>
+    Ok(Adddddddddddd("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx").asJson)
   }
 
   import cats.syntax.all._
@@ -54,7 +48,7 @@ object M extends IOApp  {
   import org.http4s.implicits._
   import org.http4s.server.Router
   import scala.concurrent.duration._
-  val services = helloWorldService2 <+> helloWorldService  <+> helloWorldService3
+  val services = helloWorldService2 <+> helloWorldService <+> helloWorldService3
   // services: cats.data.Kleisli[cats.data.OptionT[IO, β$0$], Request[IO], Response[IO]] = Kleisli(
   //   run = cats.data.KleisliSemigroupK$$Lambda$20809/607901384@6d3944e4
   // )
@@ -84,11 +78,11 @@ object M extends IOApp  {
 
   import wvlet.airframe._
 
-  case class AppConfig(appName:String)
-
+  case class AppConfig(appName: String)
 
   val d = newDesign
-    .bind[AppConfig].toInstance(AppConfig("Hello Airframe!"))
+    .bind[AppConfig]
+    .toInstance(AppConfig("Hello Airframe!"))
 
   // Creates a new MyApp
 //  d.build[MyApp] { app: MyApp => {
@@ -97,13 +91,13 @@ object M extends IOApp  {
 //    }
 //  }
 
-    def run(args: List[String]): IO[ExitCode] =
-      EmberServerBuilder
-        .default[IO]
-        .withHost(ipv4"0.0.0.0")
-        .withPort(port"8080")
-        .withHttpApp(httpApp)
-        .build
-        .use(_ => IO.never)
-        .as(ExitCode.Success)
+  def run(args: List[String]): IO[ExitCode] =
+    EmberServerBuilder
+      .default[IO]
+      .withHost(ipv4"0.0.0.0")
+      .withPort(port"8080")
+      .withHttpApp(httpApp)
+      .build
+      .use(_ => IO.never)
+      .as(ExitCode.Success)
 }

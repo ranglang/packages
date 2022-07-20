@@ -1,6 +1,5 @@
 package e
 
-
 import wvlet.airframe._
 
 case class X(name: String)
@@ -8,9 +7,8 @@ case class X(name: String)
 class App1(x: X) {
   // Do something with x, y, and z
 
-  def printName = {
-    println(s"x ${x}")
-  }
+  def printName =
+    println(s"x $x")
 }
 
 object AirFrame extends App {

@@ -10,6 +10,7 @@ import com.goyeau.mill.git.{GitVersionModule, GitVersionedPublishModule}
 import com.goyeau.mill.scalafix.StyleModule
 import io.github.davidgregory084.TpolecatModule
 import mill._
+import mill.scalalib.scalafmt.ScalafmtModule
 import mill._, scalalib._
 import mill.scalalib.TestModule.Munit
 import mill.scalalib._
@@ -19,7 +20,7 @@ import mill.scalalib.publish.{Developer, License, PomSettings, VersionControl}
 
 import mill._, scalalib._
 
-object kubernetes extends ScalaModule {
+object kubernetes extends ScalaModule with ScalafmtModule {
   // def scalaVersion = "3.0.2"
  override def scalaVersion ="3.1.3"
   override def scalacOptions =
