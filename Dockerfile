@@ -10,7 +10,7 @@ COPY . .
 RUN pwd
 RUN mill  kubernetes.assembly
 RUN ls -ls
-RUN ls -ls /usr/src/app/out/kubernetes/
+RUN ls -ls /usr/src/app/out/kubernetes/assembly.dest
 RUN pwd
 
 #deno compile --unstable --allow-net app.ts -p 8080
